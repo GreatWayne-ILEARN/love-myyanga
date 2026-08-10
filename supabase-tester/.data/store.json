@@ -1,0 +1,590 @@
+{
+  "users": [
+    {
+      "id": "22222222-2222-2222-2222-222222222222",
+      "email": "oadeagbo@gmail.com",
+      "password": "Founding2026!",
+      "email_confirmed_at": "2026-07-28T07:52:39.954Z",
+      "user_metadata": {
+        "full_name": "Olufemi Adeagbo"
+      },
+      "app_metadata": {
+        "provider": "email"
+      }
+    },
+    {
+      "id": "11111111-1111-1111-1111-111111111111",
+      "email": "tester@myyanga.test",
+      "password": "Test2026!",
+      "email_confirmed_at": "2026-07-28T07:52:39.954Z",
+      "user_metadata": {
+        "full_name": "Content Tester"
+      },
+      "app_metadata": {
+        "provider": "email"
+      }
+    },
+    {
+      "id": "33333333-3333-3333-3333-333333333333",
+      "email": "user@myyanga.test",
+      "password": "User2026!",
+      "email_confirmed_at": "2026-07-28T07:52:39.954Z",
+      "user_metadata": {
+        "full_name": "Demo User"
+      },
+      "app_metadata": {
+        "provider": "email"
+      }
+    }
+  ],
+  "profiles": [
+    {
+      "id": "22222222-2222-2222-2222-222222222222",
+      "email": "oadeagbo@gmail.com",
+      "name": "Olufemi Adeagbo",
+      "role": "owner",
+      "is_owner": true,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "11111111-1111-1111-1111-111111111111",
+      "email": "tester@myyanga.test",
+      "name": "Content Tester",
+      "role": "admin",
+      "is_owner": false,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "33333333-3333-3333-3333-333333333333",
+      "email": "user@myyanga.test",
+      "name": "Demo User",
+      "role": "user",
+      "is_owner": false,
+      "status": "ACTIVE"
+    }
+  ],
+  "creators": [
+    {
+      "id": 1,
+      "name": "Maki Oh",
+      "slug": "maki-oh",
+      "discipline": "fashion",
+      "city": "Lagos",
+      "country": "Nigeria",
+      "credibility_score": 95,
+      "is_promoted": true,
+      "promotion_kind": "credibility",
+      "is_active": true
+    },
+    {
+      "id": 2,
+      "name": "Mai Atafo",
+      "slug": "mai-atafo",
+      "discipline": "fashion",
+      "city": "Lagos",
+      "country": "Nigeria",
+      "credibility_score": 92,
+      "is_promoted": true,
+      "promotion_kind": "credibility",
+      "is_active": true
+    },
+    {
+      "id": 3,
+      "name": "Andrea Iyamah",
+      "slug": "andrea-iyamah",
+      "discipline": "fashion",
+      "city": "Lagos",
+      "country": "Nigeria",
+      "credibility_score": 90,
+      "is_promoted": true,
+      "promotion_kind": "credibility",
+      "is_active": true
+    },
+    {
+      "id": 4,
+      "name": "Tubo",
+      "slug": "tubo",
+      "discipline": "fashion",
+      "city": "Lagos",
+      "country": "Nigeria",
+      "credibility_score": 88,
+      "is_promoted": true,
+      "promotion_kind": "paid",
+      "is_active": true
+    },
+    {
+      "id": 5,
+      "name": "Orange Culture",
+      "slug": "orange-culture",
+      "discipline": "fashion",
+      "city": "Lagos",
+      "country": "Nigeria",
+      "credibility_score": 85,
+      "is_promoted": false,
+      "is_active": true
+    },
+    {
+      "id": 6,
+      "name": "Emmy Kasbit",
+      "slug": "emmy-kasbit",
+      "discipline": "fashion",
+      "city": "Lagos",
+      "country": "Nigeria",
+      "credibility_score": 84,
+      "is_promoted": false,
+      "is_active": true
+    },
+    {
+      "id": 7,
+      "name": "Lisa Folawiyo",
+      "slug": "lisa-folawiyo",
+      "discipline": "fashion",
+      "city": "Lagos",
+      "country": "Nigeria",
+      "credibility_score": 91,
+      "is_promoted": true,
+      "promotion_kind": "credibility",
+      "is_active": true
+    },
+    {
+      "id": 8,
+      "name": "Deola Sagoe",
+      "slug": "deola-sagoe",
+      "discipline": "fashion",
+      "city": "Lagos",
+      "country": "Nigeria",
+      "credibility_score": 93,
+      "is_promoted": true,
+      "promotion_kind": "credibility",
+      "is_active": true
+    }
+  ],
+  "garments": [
+    {
+      "id": 1,
+      "creator_id": 1,
+      "name": "Coral Agbada Set",
+      "part": "main_outfit",
+      "style": "Agbada",
+      "event_tags": [
+        "wedding",
+        "festival",
+        "traditional"
+      ],
+      "colours": [
+        "Coral",
+        "Gold"
+      ],
+      "gender": "male",
+      "price_ngn": 285000,
+      "is_premium": true,
+      "is_active": true,
+      "image": null,
+      "card_image": null,
+      "created_at": "2026-07-28T07:52:39.937Z"
+    },
+    {
+      "id": 2,
+      "creator_id": 1,
+      "name": "Royal Lace Gown",
+      "part": "main_outfit",
+      "style": "Gown",
+      "event_tags": [
+        "wedding",
+        "evening"
+      ],
+      "colours": [
+        "White",
+        "Gold"
+      ],
+      "gender": "female",
+      "price_ngn": 320000,
+      "is_premium": true,
+      "is_active": true,
+      "image": null,
+      "card_image": null,
+      "created_at": "2026-07-28T07:52:39.954Z"
+    },
+    {
+      "id": 3,
+      "creator_id": 1,
+      "name": "Aso-Oke Gele",
+      "part": "head_piece",
+      "style": "Aso-Oke",
+      "event_tags": [
+        "wedding",
+        "traditional"
+      ],
+      "colours": [
+        "Coral",
+        "Gold"
+      ],
+      "gender": "female",
+      "price_ngn": 45000,
+      "is_premium": true,
+      "is_active": true,
+      "image": null,
+      "card_image": null,
+      "created_at": "2026-07-28T07:52:39.954Z"
+    },
+    {
+      "id": 4,
+      "creator_id": 1,
+      "name": "Beaded Clutch",
+      "part": "bag",
+      "style": "Ankara",
+      "event_tags": [
+        "wedding",
+        "corporate"
+      ],
+      "colours": [
+        "Gold"
+      ],
+      "gender": "female",
+      "price_ngn": 35000,
+      "is_premium": true,
+      "is_active": true,
+      "image": null,
+      "card_image": null,
+      "created_at": "2026-07-28T07:52:39.954Z"
+    },
+    {
+      "id": 5,
+      "creator_id": 1,
+      "name": "Embroidered Kaftan",
+      "part": "main_outfit",
+      "style": "Kaftan",
+      "event_tags": [
+        "corporate",
+        "casual"
+      ],
+      "colours": [
+        "Emerald"
+      ],
+      "gender": "male",
+      "price_ngn": 165000,
+      "is_premium": true,
+      "is_active": true,
+      "image": null,
+      "card_image": null,
+      "created_at": "2026-07-28T07:52:39.954Z"
+    },
+    {
+      "id": 6,
+      "creator_id": 1,
+      "name": "Senator Suit",
+      "part": "main_outfit",
+      "style": "Senator",
+      "event_tags": [
+        "corporate",
+        "wedding"
+      ],
+      "colours": [
+        "Navy"
+      ],
+      "gender": "male",
+      "price_ngn": 195000,
+      "is_premium": true,
+      "is_active": true,
+      "image": null,
+      "card_image": null,
+      "created_at": "2026-07-28T07:52:39.954Z"
+    },
+    {
+      "id": 7,
+      "creator_id": 1,
+      "name": "Ankara Two-Piece",
+      "part": "main_outfit",
+      "style": "Two-piece",
+      "event_tags": [
+        "casual",
+        "festival"
+      ],
+      "colours": [
+        "Ankara"
+      ],
+      "gender": "female",
+      "price_ngn": 98000,
+      "is_premium": true,
+      "is_active": true,
+      "image": null,
+      "card_image": null,
+      "created_at": "2026-07-28T07:52:39.954Z"
+    },
+    {
+      "id": 8,
+      "creator_id": 1,
+      "name": "Gold Heels",
+      "part": "shoes",
+      "style": "Gown",
+      "event_tags": [
+        "wedding",
+        "evening"
+      ],
+      "colours": [
+        "Gold"
+      ],
+      "gender": "female",
+      "price_ngn": 55000,
+      "is_premium": true,
+      "is_active": true,
+      "image": null,
+      "card_image": null,
+      "created_at": "2026-07-28T07:52:39.954Z"
+    },
+    {
+      "id": 9,
+      "creator_id": 2,
+      "name": "Midnight Agbada",
+      "part": "main_outfit",
+      "style": "Agbada",
+      "event_tags": [
+        "wedding",
+        "traditional"
+      ],
+      "colours": [
+        "Navy",
+        "Gold"
+      ],
+      "gender": "male",
+      "price_ngn": 310000,
+      "is_premium": true,
+      "is_active": true,
+      "image": null,
+      "card_image": null,
+      "created_at": "2026-07-28T07:52:39.954Z"
+    },
+    {
+      "id": 10,
+      "creator_id": 2,
+      "name": "Silk Senator",
+      "part": "main_outfit",
+      "style": "Senator",
+      "event_tags": [
+        "corporate"
+      ],
+      "colours": [
+        "Charcoal"
+      ],
+      "gender": "male",
+      "price_ngn": 175000,
+      "is_premium": true,
+      "is_active": true,
+      "image": null,
+      "card_image": null,
+      "created_at": "2026-07-28T07:52:39.954Z"
+    },
+    {
+      "id": 11,
+      "creator_id": 3,
+      "name": "Coral Bridal Lace",
+      "part": "main_outfit",
+      "style": "Lace",
+      "event_tags": [
+        "wedding"
+      ],
+      "colours": [
+        "Coral",
+        "White"
+      ],
+      "gender": "female",
+      "price_ngn": 450000,
+      "is_premium": true,
+      "is_active": true,
+      "image": null,
+      "card_image": null,
+      "created_at": "2026-07-28T07:52:39.954Z"
+    },
+    {
+      "id": 12,
+      "creator_id": 3,
+      "name": "Bridal Veil Set",
+      "part": "head_piece",
+      "style": "Lace",
+      "event_tags": [
+        "wedding"
+      ],
+      "colours": [
+        "White"
+      ],
+      "gender": "female",
+      "price_ngn": 65000,
+      "is_premium": true,
+      "is_active": true,
+      "image": null,
+      "card_image": null,
+      "created_at": "2026-07-28T07:52:39.954Z"
+    },
+    {
+      "id": 13,
+      "creator_id": 5,
+      "name": "Ghana Kente Clutch",
+      "part": "bag",
+      "style": "Ankara",
+      "event_tags": [
+        "festival",
+        "casual"
+      ],
+      "colours": [
+        "Gold"
+      ],
+      "gender": "female",
+      "price_ngn": 42000,
+      "country": "Ghana",
+      "is_premium": true,
+      "is_active": true,
+      "image": null,
+      "card_image": null,
+      "created_at": "2026-07-28T07:52:39.954Z"
+    }
+  ],
+  "looks": [],
+  "look_comments": [],
+  "events": [
+    {
+      "id": 1,
+      "title": "Lagos Fashion Week Preview",
+      "description": "Runway preview of top African designers.",
+      "venue": "Eko Hotel",
+      "city": "Lagos",
+      "starts_at": "2026-08-11T07:52:39.954Z",
+      "is_published": true
+    },
+    {
+      "id": 2,
+      "title": "Abuja Bridal Expo",
+      "description": "Bridal fashion showcase.",
+      "venue": "Transcorp Hilton",
+      "city": "Abuja",
+      "starts_at": "2026-08-27T07:52:39.954Z",
+      "is_published": true
+    }
+  ],
+  "pyl_entries": [],
+  "monetization_settings": [
+    {
+      "feature": "virtual_wear",
+      "enabled": true,
+      "mode": "free",
+      "price_ngn": 0,
+      "currency": "NGN",
+      "billing": "one_time",
+      "provider_order": [
+        "flutterwave",
+        "paystack",
+        "stripe"
+      ]
+    },
+    {
+      "feature": "smart_search",
+      "enabled": true,
+      "mode": "free",
+      "price_ngn": 0,
+      "currency": "NGN",
+      "billing": "one_time",
+      "provider_order": [
+        "flutterwave",
+        "paystack",
+        "stripe"
+      ]
+    },
+    {
+      "feature": "pyl_entry",
+      "enabled": true,
+      "mode": "free",
+      "price_ngn": 0,
+      "currency": "NGN",
+      "billing": "one_time",
+      "provider_order": [
+        "flutterwave",
+        "paystack",
+        "stripe"
+      ]
+    },
+    {
+      "feature": "premium",
+      "enabled": true,
+      "mode": "paid",
+      "price_ngn": 2500,
+      "currency": "NGN",
+      "billing": "one_time",
+      "provider_order": [
+        "flutterwave",
+        "paystack",
+        "stripe"
+      ]
+    },
+    {
+      "feature": "events",
+      "enabled": true,
+      "mode": "free",
+      "price_ngn": 0,
+      "currency": "NGN",
+      "billing": "one_time",
+      "provider_order": [
+        "flutterwave",
+        "paystack",
+        "stripe"
+      ]
+    },
+    {
+      "feature": "creator_promotion",
+      "enabled": true,
+      "mode": "paid",
+      "price_ngn": 50000,
+      "currency": "NGN",
+      "billing": "one_time",
+      "provider_order": [
+        "flutterwave",
+        "paystack",
+        "stripe"
+      ]
+    }
+  ],
+  "entitlements": [],
+  "admin_privileges": [
+    {
+      "id": 1,
+      "user_id": "11111111-1111-1111-1111-111111111111",
+      "privilege": "content_studio"
+    },
+    {
+      "id": 2,
+      "user_id": "11111111-1111-1111-1111-111111111111",
+      "privilege": "garments"
+    },
+    {
+      "id": 3,
+      "user_id": "11111111-1111-1111-1111-111111111111",
+      "privilege": "delete_selected"
+    }
+  ],
+  "platform_co_owners": [],
+  "editorial_daily": [],
+  "analytics_events": [],
+  "blog_comments": [],
+  "settings": [
+    {
+      "name": "founding_owner_email",
+      "value": "oadeagbo@gmail.com"
+    },
+    {
+      "name": "google_auth_enabled",
+      "value": "true"
+    }
+  ],
+  "sequences": {
+    "garments": 13,
+    "creators": 8,
+    "looks": 0,
+    "events": 2,
+    "pyl_entries": 0
+  },
+  "magic_links": {},
+  "wa_challenges": {
+    "+2348012345678": {
+      "code": "527963",
+      "expires": 1785225872425
+    }
+  }
+}

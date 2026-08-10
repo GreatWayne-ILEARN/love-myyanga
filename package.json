@@ -1,0 +1,50 @@
+{
+  "name": "myyanga-v5",
+  "version": "5.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node api.js && vite",
+    "build": "node api.js && vite build",
+    "preview": "vite preview",
+    "sb:start": "supabase start",
+    "sb:deploy": "supabase functions deploy payments && supabase functions deploy smart-search && supabase functions deploy ai-chat && supabase functions deploy virtual-tryon && supabase functions deploy send-reel && supabase functions deploy auth-whatsapp",
+    "sb:migrate": "supabase db push",
+    "sb:types": "supabase gen types typescript --linked > src/lib/database.types.ts",
+    "supabase-tester:start": "node supabase-tester/server.mjs",
+    "dev:tester": "node scripts/dev-with-tester.mjs",
+    "test:supabase-tester": "node scripts/test-supabase-tester.mjs",
+    "verify:production": "node scripts/verify-production.mjs",
+    "audit:hostile": "node scripts/hostile-audit.mjs",
+    "audit:hostile:mock-only": "node scripts/hostile-audit.mjs --mock-only",
+    "audit:hostile:live": "node scripts/hostile-audit.mjs --require-live",
+    "audit:aggressive": "node scripts/aggressive-audit.mjs",
+    "test:virtual-wear": "node scripts/test-virtual-wear.mjs",
+    "test:virtual-wear:capture": "node scripts/capture-virtual-wear-test.mjs",
+    "test:reel-delivery": "node scripts/test-reel-delivery.mjs",
+    "package:staging": "node scripts/package-staging.mjs",
+    "docs:pdf": "node scripts/render-capabilities-pdf.mjs",
+    "docs:business-pdf": "node scripts/render-doc-pdf.mjs docs/MYYANGA_BUSINESS_PLAN.md docs/MYYANGA_BUSINESS_PLAN.pdf \"MyYanga Business Plan\"",
+    "docs:features-pdf": "node scripts/render-doc-pdf.mjs docs/FEATURES_AND_IMPLEMENTATION.md docs/FEATURES_AND_IMPLEMENTATION.pdf \"MyYanga v5 \u2014 Features & Implementation\"",
+    "docs:runbook-pdf": "node scripts/render-doc-pdf.mjs docs/AWS_SECRETS_RUNBOOK.md docs/AWS_SECRETS_RUNBOOK.pdf \"MyYanga v5 \u2014 AWS Secrets Runbook\"",
+    "docs:all-pdfs": "npm run docs:pdf && npm run docs:business-pdf && npm run docs:features-pdf && npm run docs:runbook-pdf",
+    "docs:dossier": "node scripts/render-dossier-pdf.mjs",
+    "docs:myangax": "node scripts/render-myangax-pdf.mjs",
+    "docs:myangax:shots": "node scripts/capture-myangax-shots.mjs",
+    "docs:shots": "node scripts/capture-architecture-shots.mjs",
+    "docs:visual": "node scripts/build-architecture-html.mjs"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "canvas": "^3.2.3",
+    "happy-dom": "^20.11.1",
+    "pdf-lib": "^1.17.1",
+    "playwright": "^1.61.1",
+    "vite": "^5.4.0"
+  }
+}

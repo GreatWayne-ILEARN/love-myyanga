@@ -1,0 +1,30 @@
+{
+  "captured_at": "2026-08-06T12:10:00.000Z",
+  "mode": "testing",
+  "server": "vite dev @ http://127.0.0.1:5175",
+  "qa_param": "?view=virtualwear&vwqa=1",
+  "brief": {
+    "gender": "male",
+    "scene": "wedding",
+    "vibe": "regal",
+    "budget": "100000-300000"
+  },
+  "shots": [
+    { "file": "01-landing.png", "stage": "landing", "label": "Landing — Start styling" },
+    { "file": "03-questionnaire-selfie.png", "stage": "questionnaire", "label": "Questionnaire — vwqa selfie loaded" },
+    { "file": "04-questionnaire-filled.png", "stage": "questionnaire", "label": "Questionnaire — His, Wedding, Regal, budget filled" },
+    { "file": "05-loading.png", "stage": "loading", "label": "Loading — Curating looks from paying brands" },
+    { "file": "06-results-grid.png", "stage": "results", "label": "Results grid + auto try-on (2 looks, Mai Atafo)" },
+    { "file": "08-tryon-success.png", "stage": "tryon_success", "label": "Canvas try-on — output differs from selfie (preview mode)" }
+  ],
+  "assertions": {
+    "paid_brands_in_pool": 6,
+    "curate_looks": true,
+    "look_count": 2,
+    "tryon": true,
+    "render_mode": "canvas",
+    "canvas_differs_from_input": true
+  },
+  "errors": [],
+  "verdict": "PASS (testing mode canvas path)"
+}

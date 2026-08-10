@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hostile Audit Runner</title>
+    <style>
+      #app-frame { width: 1px; height: 1px; border: 0; opacity: 0; position: absolute; }
+    </style>
+  </head>
+  <body>
+    <iframe id="app-frame" src="/?view=home"></iframe>
+    <pre id="audit-json">PENDING</pre>
+    <script type="module">
+      const results = [];
+      const pass = (name, evidence = "") => results.push({ name, ok: true, evidence });
+      const fail = (name, reason, evidence = "") => results.push({ name, ok: false, reason, evidence });
+
+      async function waitForApp(frame) {
+        for (let i = 0; i < 40; i++) {
+          const doc = frame.contentDocument;
+          if (doc?.body?.innerText?.includes("MyYanga")) return doc;
+          await new Promise((r) => setTimeout(r, 250));
+        }
+        throw new Error("app did not load in iframe");
+      }
+
+      async function run() {
+        const frame = document.getElementById("app-frame");
+        await new Promise((resolve, reject) => {
+          frame.onload = resolve;
+          frame.onerror = reject;
+          setTimeout(() => reject(new Error("iframe load timeout")), 20000);
+        });
+        const doc = await waitForApp(frame);
+        const win = frame.contentWindow;
+
+        const { compositeLook, imagesDiffer, imageFingerprint } = await import("/src/lib/virtualWear.js");
+        const { garmentArtUrl } = await import("/src/lib/garmentArt.js");
+        const photoCanvas = doc.createElement("canvas");
+        photoCanvas.width = 320;
+        photoCanvas.height = 480;
+        const pctx = photoCanvas.getContext("2d");
+        pctx.fillStyle = "#c4a882";
+        pctx.fillRect(0, 0, 320, 480);
+        pctx.fillStyle = "#2a1810";
+        pctx.beginPath();
+        pctx.ellipse(160, 90, 55, 70, 0, 0, Math.PI * 2);
+        pctx.fill();
+        const photoDataUrl = photoCanvas.toDataURL("image/jpeg", 0.92);
+        const garment = { name: "Coral Royal Agbada", part: "main_outfit", style: "Agbada", colours: ["Coral", "Gold"] };
+        const out = await compositeLook({
+          photoDataUrl,
+          garments: [{ ...garment, image: garmentArtUrl(garment) }],
+          scene: "wedding",
+        });
+        imagesDiffer(photoDataUrl, out)
+          ? pass("virtual wear canvas output differs from input", `photo=${imageFingerprint(photoDataUrl)} out=${imageFingerprint(out)}`)
+          : fail("virtual wear canvas output differs from input", "UNCHANGED IMAGE");
+
+        const { matchGarment, emptyMultiFilters } = await import("/src/lib/catalog.js");
+        const { MOCK_GARMENTS } = await import("/src/lib/mockGarments.js");
+        const f = emptyMultiFilters();
+        f.gender = "male";
+        f.styles = ["Agbada"];
+        const hits = MOCK_GARMENTS.filter((g) => matchGarment(g, f));
+        hits.length > 0 ? pass("smart search His+Agbada filter", `hits=${hits.length}`) : fail("smart search His+Agbada filter", "no matches");
+
+        const f2 = emptyMultiFilters();
+        f2.gender = "female";
+        f2.countries = ["Ghana"];
+        f2.parts = ["bag"];
+        const hers = MOCK_GARMENTS.filter((g) => matchGarment(g, f2));
+        hers.length > 0 ? pass("smart search Hers+Ghana+bag filter", `hits=${hers.length}`) : fail("smart search Hers+Ghana+bag filter", "no matches");
+
+        const signIn =
+          doc.querySelector('[data-testid="sign-in"]') ||
+          [...doc.querySelectorAll("button")].find((b) => /^(Login|Sign in)/i.test(b.textContent.trim()));
+        signIn?.click();
+        await new Promise((r) => setTimeout(r, 500));
+        const text = doc.body.innerText;
+        /Continue with Google/i.test(text) ? pass("auth modal: Google button present") : fail("auth modal: Google button present", "not found");
+        /Continue with WhatsApp/i.test(text) ? pass("auth modal: WhatsApp option present") : fail("auth modal: WhatsApp option present", "not found");
+
+        const emailBtn = [...doc.querySelectorAll("button,a")].find((el) => /Use email instead/i.test(el.textContent));
+        emailBtn?.click();
+        await new Promise((r) => setTimeout(r, 400));
+        /Email me a magic link/i.test(doc.body.innerText)
+          ? pass("auth modal: email magic link button")
+          : fail("auth modal: email magic link button", "not found");
+
+        signIn?.click();
+        await new Promise((r) => setTimeout(r, 400));
+        const waBtn = [...doc.querySelectorAll("button")].find((el) => /Continue with WhatsApp/i.test(el.textContent));
+        waBtn?.click();
+        await new Promise((r) => setTimeout(r, 300));
+        const phoneInput = doc.querySelector('.modal input[inputmode="tel"], .modal input[placeholder*="+234"]');
+        if (phoneInput) {
+          phoneInput.value = "+2348012345678";
+          phoneInput.dispatchEvent(new Event("input", { bubbles: true }));
+          const sendBtn = [...doc.querySelectorAll(".modal button")].find((b) => /Send code/i.test(b.textContent));
+          sendBtn?.click();
+          await new Promise((r) => setTimeout(r, 600));
+        }
+        const waText = doc.body.innerText;
+        /Testing code:/i.test(waText) && !/Signed in with WhatsApp/i.test(waText)
+          ? pass("WhatsApp OTP shown in testing (not fake success)")
+          : fail("WhatsApp OTP shown in testing (not fake success)", "testing OTP not displayed");
+
+        signIn?.click();
+        await new Promise((r) => setTimeout(r, 400));
+        const emailBtn2 = [...doc.querySelectorAll("button,a")].find((el) => /Use email instead/i.test(el.textContent));
+        emailBtn2?.click();
+        await new Promise((r) => setTimeout(r, 400));
+
+        const emailInput = doc.querySelector('.modal input:not([type="password"])');
+        const pwdInput = doc.querySelector('input[type="password"]');
+        if (emailInput && pwdInput) {
+          emailInput.value = "tester@myyanga.test";
+          emailInput.dispatchEvent(new Event("input", { bubbles: true }));
+          pwdInput.value = "Test2026!";
+          pwdInput.dispatchEvent(new Event("input", { bubbles: true }));
+          const loginBtn = [...doc.querySelectorAll("button")].find((b) => /^Login$/i.test(b.textContent.trim()));
+          loginBtn?.click();
+          await new Promise((r) => setTimeout(r, 900));
+          try {
+            const session = JSON.parse(win.localStorage.getItem("myyanga_test_session") || "null");
+            session?.email === "tester@myyanga.test"
+              ? pass("tester login tester@myyanga.test", `role=${session.role}`)
+              : fail("tester login tester@myyanga.test", "no session");
+          } catch {
+            fail("tester login tester@myyanga.test", "bad session JSON");
+          }
+        } else {
+          fail("tester login tester@myyanga.test", "form inputs not found");
+        }
+
+        document.getElementById("audit-json").textContent = JSON.stringify({ results });
+      }
+
+      run().catch((e) => {
+        fail("audit runner", e.message || String(e));
+        document.getElementById("audit-json").textContent = JSON.stringify({ results });
+      });
+    </script>
+  </body>
+</html>
